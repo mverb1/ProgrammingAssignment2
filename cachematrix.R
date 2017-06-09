@@ -11,13 +11,14 @@ set <- function(y) {                    ## define the set function to assign new
      }                                      ## you need this in order to refer 
                                               ## to the functions with the $ operator
 
-
-cacheSolve <- function(x, ...) {     ## Return a matrix that is the inverse of 'x'
+## code below returns the inverse of the matrix by first checking if the inverse has already been computed
+## if so, it gets the result and the function is complete
+cacheSolve <- function(x, ...) {     
     inv <- x$getinverse()
     if(!is.null(inv)) {
     message("getting cached data")
     return(inv)
-      }
+      }                  ## If the inverse is not produced, it computes the inverse and sets the value in the cache as the 'setinverse' function
     data <- x$get()
     inv <- solve(data, ...)
     x$setinverse(inv)
